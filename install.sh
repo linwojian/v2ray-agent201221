@@ -501,8 +501,8 @@ EOF
 
 # 检查ip
 checkIP(){
-    pingIP=`ping -4 -c 1 -W 1000 ${domain}|sed '1{s/[^(]*(//;s/).*//;q;}'`
-    # ping -6 -c 1 -W 1000 ${domain}|sed '1{s/^([\da-fA-F]{1,4}:){7}[\da-fA-F]{1,4}$//;q;}'
+    pingIP=`ping -6 -c 1 -W 1000 ${domain}|sed '1{s/^([\da-fA-F]{1,4}:){7}[\da-fA-F]{1,4}$//;q;}'`
+    # ping -4 -c 1 -W 1000 ${domain}|sed '1{s/[^(]*(//;s/).*//;q;}'    
     if [[ ! -z "${pingIP}" ]] && [[ `echo ${pingIP}|grep '^\([1-9]\|[1-9][0-9]\|1[0-9][0-9]\|2[0-4][0-9]\|25[0-5]\)\.\([0-9]\|[1-9][0-9]\|1[0-9][0-9]\|2[0-4][0-9]\|25[0-5]\)\.\([0-9]\|[1-9][0-9]\|1[0-9][0-9]\|2[0-4][0-9]\|25[0-5]\)\.\([0-9]\|[1-9][0-9]\|1[0-9][0-9]\|2[0-4][0-9]\|25[0-5]\)$'` ]]
     then
         echo
@@ -2699,8 +2699,8 @@ ipv6HumanVerification(){
 }
 EOF
 
-#    cat << EOF > ${configPath}10_ipv6_outbounds.json
-    cat << EOF > ${configPath}10_ipv4_outbounds.json
+    cat << EOF > ${configPath}10_ipv6_outbounds.json
+#   cat << EOF > ${configPath}10_ipv4_outbounds.json
 {
   "outbounds": [
     {
